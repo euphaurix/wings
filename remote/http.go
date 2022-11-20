@@ -4,12 +4,14 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/pterodactyl/wings/internal/models"
 	"io"
 	"net/http"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/pterodactyl/wings/config"
+	"github.com/pterodactyl/wings/internal/models"
 
 	"emperror.dev/errors"
 	"github.com/apex/log"
@@ -52,6 +54,7 @@ func New(base string, opts ...ClientOption) Client {
 		},
 		maxAttempts: 0,
 	}
+
 	for _, opt := range opts {
 		opt(&c)
 	}
@@ -108,6 +111,8 @@ func (c *client) requestOnce(ctx context.Context, method, path string, body io.R
 	req.Header.Set("Accept", "application/vnd.pterodactyl.v1+json")
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s.%s", c.tokenId, c.token))
+	req.Header.Set("CF-Access-Client-Id", config.Get().CloudflareAccessId)
+	req.Header.Set("CF-Access-Client-Secret", config.Get().CloudflareAccessSecret)
 
 	// Call all opts functions to allow modifying the request
 	for _, o := range opts {

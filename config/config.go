@@ -274,6 +274,10 @@ type Configuration struct {
 	// so that the token can be looked up correctly.
 	AuthenticationTokenId string `json:"token_id" yaml:"token_id"`
 
+	// Cloudflare Access secrets
+	CloudflareAccessId     string `json:"cf_id" yaml:"cf_id"`
+	CloudflareAccessSecret string `json:"cf_secret" yaml:"cf_secret"`
+
 	// The token used when performing operations. Requests to this instance must
 	// validate against it.
 	AuthenticationToken string `json:"token" yaml:"token"`
