@@ -293,8 +293,8 @@ func debugLogRequest(req *http.Request) {
 	}
 	headers := make(map[string][]string)
 	for k, v := range req.Header {
-		
-		if k != "Authorization" || !strings.HasPrefix(k, "Cf-Access")  || len(v) == 0 || len(v[0]) == 0 {
+
+		if k != "Authorization" || strings.HasPrefix(k, "Cf-Access") || len(v) == 0 || len(v[0]) == 0 {
 			headers[k] = v
 			continue
 		}
