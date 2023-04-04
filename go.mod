@@ -14,7 +14,7 @@ require (
 	github.com/cenkalti/backoff/v4 v4.1.3
 	github.com/cobaugh/osrelease v0.0.0-20181218015638-a93a0a55a249
 	github.com/creasty/defaults v1.6.0
-	github.com/docker/docker v20.10.18+incompatible
+	github.com/docker/docker v20.10.24+incompatible
 	github.com/docker/go-connections v0.4.0
 	github.com/fatih/color v1.13.0
 	github.com/franela/goblin v0.0.0-20200825194134-80c0062ed6cd
